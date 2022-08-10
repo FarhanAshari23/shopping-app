@@ -141,3 +141,14 @@ TextStyle hpProfile = GoogleFonts.poppins(
   fontWeight: FontWeight.w500,
   color: const Color(0xff191919),
 );
+
+TextStyle mainTitleSetting = GoogleFonts.poppins(
+  fontSize: 12,
+  fontWeight: FontWeight.w500,
+  color: Colors.white,
+);
+
+TextStyle subTitleSetting = GoogleFonts.poppins(
+  fontSize: 10,
+  color: Colors.white,
+);
