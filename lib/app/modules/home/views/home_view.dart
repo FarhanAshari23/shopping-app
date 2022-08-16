@@ -409,7 +409,7 @@ class HomeView extends GetView<HomeController> {
                       padding:
                           const EdgeInsets.only(top: 20, left: 15, right: 20),
                       child: Container(
-                        width: mediaQueryWidth * 0.75,
+                        width: mediaQueryWidth * 0.563,
                         height: bodyHeight * 0.15,
                         child: Stack(
                           children: [
@@ -446,11 +446,27 @@ class HomeView extends GetView<HomeController> {
                     Padding(
                       padding: const EdgeInsets.only(bottom: 30, right: 20),
                       child: Image.asset(
-                        'assets/gambar/square.png',
-                        width: mediaQueryWidth * 0.1,
-                        height: bodyHeight * 0.1,
+                        'assets/gambar/notification.png',
+                        width: mediaQueryWidth * 0.065,
+                        height: bodyHeight * 0.065,
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30, right: 20),
+                      child: Image.asset(
+                        'assets/gambar/mail.png',
+                        width: mediaQueryWidth * 0.065,
+                        height: bodyHeight * 0.065,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 30, right: 20),
+                      child: Image.asset(
+                        'assets/gambar/MyDrawer.png',
+                        width: mediaQueryWidth * 0.065,
+                        height: bodyHeight * 0.065,
+                      ),
+                    ),
                   ],
                 ),
               ],

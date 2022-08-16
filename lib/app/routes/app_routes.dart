@@ -10,6 +10,7 @@ abstract class Routes {
   static const TRANSACTION = _Paths.TRANSACTION;
   static const PROFILE = _Paths.PROFILE;
   static const DASHBOARD = _Paths.DASHBOARD;
+  static const RESET_PASSWORD = _Paths.RESET_PASSWORD;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const TRANSACTION = '/transaction';
   static const PROFILE = '/profile';
   static const DASHBOARD = '/dashboard';
+  static const RESET_PASSWORD = '/reset-password';
 }

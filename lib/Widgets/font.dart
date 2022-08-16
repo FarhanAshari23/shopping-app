@@ -152,3 +152,15 @@ TextStyle subTitleSetting = GoogleFonts.poppins(
   fontSize: 10,
   color: Colors.white,
 );
+
+TextStyle resetTitle = GoogleFonts.robotoSlab(
+  color: Color(0xffFFFFF0),
+  fontSize: 26,
+  fontWeight: FontWeight.w500,
+);
+
+TextStyle resetSubTitle = GoogleFonts.robotoSlab(
+  color: Color(0xffFFFFF0),
+  fontSize: 24,
+  fontWeight: FontWeight.w500,
+);

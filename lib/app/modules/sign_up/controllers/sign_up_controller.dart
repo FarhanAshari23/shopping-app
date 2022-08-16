@@ -11,27 +11,36 @@ class SignUpController extends GetxController {
   RxBool isHidden = true.obs;
   void signup(String email, String password) async {
     try {
-      await auth.createUserWithEmailAndPassword(
+      UserCredential myUser = await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
-      Get.offAllNamed(Routes.DASHBOARD);
+      await myUser.user!.sendEmailVerification();
+      Get.defaultDialog(
+        title: "Verification Email",
+        middleText: "Check your email ($email) to verification your account",
+        onConfirm: () {
+          Get.back();
+          Get.back();
+        },
+        textConfirm: "Yes, i will check my email",
+      );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('no user found for that email');
+      if (e.code == 'weak-password') {
+        print('The password provided is to weak');
         Get.defaultDialog(
-            title: "Terjadi Kesalahan",
-            middleText: "no user found for that email");
-      } else if (e.code == 'wrong-password') {
-        print('wrong password provided for that user');
+            title: "Error notification",
+            middleText: "The password provided is to weak");
+      } else if (e.code == 'email-already-in-use') {
+        print('The account is already exists for that email');
         Get.defaultDialog(
-            title: "Terjadi Kesalahan",
-            middleText: "wrong password provided for that user");
+            title: "Error notification",
+            middleText: "The account is already exists for that email");
       }
     } catch (e) {
       Get.defaultDialog(
-          title: "Terjadi Kesalahan",
-          middleText: "tidak dapat login dengan akun ini");
+          title: "Error notification",
+          middleText: "Can't login with this account");
     }
   }
 

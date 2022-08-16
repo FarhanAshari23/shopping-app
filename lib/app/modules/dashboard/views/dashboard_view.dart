@@ -21,8 +21,8 @@ class DashboardView extends StatelessWidget {
               index: controller.tabIndex,
               children: [
                 const HomeView(),
-                ProfileView(),
                 const TransactionView(),
+                ProfileView(),
               ],
             ),
           ),
@@ -42,12 +42,12 @@ class DashboardView extends StatelessWidget {
                   label: "Home",
                 ),
                 _bottomNavigationBarItem(
-                  icon: CupertinoIcons.person,
+                  icon: CupertinoIcons.cart,
                   label: "Transaction",
                 ),
                 _bottomNavigationBarItem(
-                  icon: CupertinoIcons.cart,
-                  label: "Transaction",
+                  icon: CupertinoIcons.person,
+                  label: "Profile",
                 ),
               ],
             ),

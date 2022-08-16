@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/ResetPassword/bindings/reset_password_binding.dart';
+import '../modules/ResetPassword/views/reset_password_view.dart';
 import '../modules/Transaction/bindings/transaction_binding.dart';
 import '../modules/Transaction/views/transaction_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
@@ -57,6 +59,11 @@ class AppPages {
       name: _Paths.DASHBOARD,
       page: () => DashboardView(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.RESET_PASSWORD,
+      page: () => ResetPasswordView(),
+      binding: ResetPasswordBinding(),
     ),
   ];
 }

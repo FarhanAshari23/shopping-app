@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_app/Widgets/font.dart';
+
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
-import '../../../routes/app_pages.dart';
-import '../controllers/login_controller.dart';
+import '../controllers/reset_password_controller.dart';
 
-class LoginView extends GetView<LoginController> {
-  final LoginController loginC = Get.put(LoginController());
-  final box = GetStorage();
-
+class ResetPasswordView extends GetView<ResetPasswordController> {
+  final ResetPasswordController resetC = Get.put(ResetPasswordController());
   @override
   Widget build(BuildContext context) {
-    if (box.read('dataRememberme') != null) {
-      loginC.emailC.text = box.read('dataRememberme')["email"];
-      loginC.passC.text = box.read('dataRememberme')["password"];
-    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff1C1E1E),
@@ -23,27 +16,26 @@ class LoginView extends GetView<LoginController> {
           padding: const EdgeInsets.only(top: 35, left: 30, right: 30),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Image.asset(
+                  'assets/gambar/Key.png',
+                  width: 50,
+                  height: 50,
+                ),
+                SizedBox(height: 25),
                 Text(
-                  'Welcome',
-                  textAlign: TextAlign.left,
-                  style: welcomeTitle,
+                  'Forget your password?',
+                  style: resetTitle,
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Hope you happy',
-                  textAlign: TextAlign.right,
-                  style: welcomeSubtitle,
-                ),
-                Text(
-                  'using OnMart',
-                  textAlign: TextAlign.right,
-                  style: welcomeSubtitle,
+                  'Dont worry, you can reset it',
+                  style: resetSubTitle,
                 ),
                 SizedBox(height: 50),
                 TextField(
-                  controller: loginC.emailC,
+                  controller: resetC.emailC,
                   autocorrect: false,
                   textInputAction: TextInputAction.next,
                   style: emailTitle,
@@ -58,62 +50,7 @@ class LoginView extends GetView<LoginController> {
                     hintStyle: emailTitle,
                   ),
                 ),
-                SizedBox(height: 20),
-                Obx(
-                  () => TextField(
-                    controller: loginC.passC,
-                    autocorrect: false,
-                    textInputAction: TextInputAction.next,
-                    style: emailTitle,
-                    obscureText: loginC.isHidden.value,
-                    decoration: InputDecoration(
-                      suffixIcon: IconButton(
-                        onPressed: () => loginC.isHidden.toggle(),
-                        icon: Icon(Icons.remove_red_eye_rounded),
-                      ),
-                      fillColor: Color(0xffF9F6EE),
-                      filled: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none,
-                      ),
-                      hintText: 'Password :',
-                      hintStyle: emailTitle,
-                    ),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => Get.toNamed(Routes.RESET_PASSWORD),
-                  child: Text('Reset Password'),
-                ),
-                Obx(
-                  () => CheckboxListTile(
-                    controlAffinity: ListTileControlAffinity.leading,
-                    title: Text(
-                      'Remember me',
-                      style: rememberMe,
-                    ),
-                    value: loginC.rememberMe.value,
-                    onChanged: (value) {
-                      loginC.rememberMe.toggle();
-                    },
-                  ),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Dont have account?',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    TextButton(
-                      onPressed: () => Get.toNamed(Routes.SIGN_UP),
-                      child: Text('REGISTER NOW'),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 30),
+                SizedBox(height: 50),
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -123,13 +60,26 @@ class LoginView extends GetView<LoginController> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: () => loginC.login(
-                        controller.emailC.text, controller.passC.text),
+                    onPressed: () => resetC.reset(controller.emailC.text),
                     child: Text(
-                      'LOGIN',
+                      'RESET',
                       style: loginButton,
                     ),
                   ),
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already have account?',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () => Get.back(),
+                      child: Text('LOGIN'),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 60),
                 Row(

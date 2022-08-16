@@ -9,9 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  TextEditingController emailC =
-      TextEditingController(text: "farhanashari2346@gmail.com");
-  TextEditingController passC = TextEditingController(text: 'inibukanpassword');
+  TextEditingController emailC = TextEditingController();
+  TextEditingController passC = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
 
   RxBool isHidden = true.obs;
@@ -36,31 +35,45 @@ class LoginController extends GetxController {
       Get.toNamed(Routes.DASHBOARD);
     } else {
       Get.defaultDialog(
-        title: 'Terjadi Kesalahan',
-        middleText: 'Email dan password belum tersedia',
+        title: 'Error notification',
+        middleText: 'Email and password is not available',
       );
     }
     try {
-      await auth.signInWithEmailAndPassword(
+      UserCredential myUser = await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
-      Get.offAllNamed(Routes.DASHBOARD);
+      if (myUser.user!.emailVerified) {
+        Get.offAllNamed(Routes.DASHBOARD);
+      } else {
+        Get.defaultDialog(
+          title: "Verification email",
+          middleText:
+              "Your email need to be verification first \n do you want to get a email verification?",
+          onConfirm: () async {
+            await myUser.user!.sendEmailVerification();
+            Get.back();
+          },
+          textConfirm: "Send again",
+          textCancel: "No, thanks",
+        );
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('no user found for that email');
         Get.defaultDialog(
-            title: "Terjadi Kesalahan",
+            title: "Error notification",
             middleText: "no user found for that email");
       } else if (e.code == 'wrong-password') {
         print('wrong password provided for that user');
         Get.defaultDialog(
-            title: "Terjadi Kesalahan",
+            title: "Error notification",
             middleText: "wrong password provided for that user");
       }
     } catch (e) {
       Get.defaultDialog(
-          title: "Terjadi Kesalahan",
+          title: "Error notification",
           middleText: "tidak dapat login dengan akun ini");
     }
   }

@@ -32,7 +32,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: "Application",
             initialRoute:
-                snapshot.data != null ? Routes.DASHBOARD : Routes.INTRODUCTION,
+                snapshot.data != null && snapshot.data!.emailVerified == true
+                    ? Routes.DASHBOARD
+                    : Routes.INTRODUCTION,
             getPages: AppPages.routes,
           );
         }

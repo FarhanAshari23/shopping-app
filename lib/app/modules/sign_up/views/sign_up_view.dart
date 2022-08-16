@@ -19,22 +19,22 @@ class SignUpView extends GetView<SignUpController> {
           padding: const EdgeInsets.only(top: 35, left: 30, right: 30),
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Welcome',
-                  textAlign: TextAlign.left,
+                  'Register first',
+                  textAlign: TextAlign.center,
                   style: welcomeTitle,
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Hope you happy',
-                  textAlign: TextAlign.right,
+                  'and after that you',
+                  textAlign: TextAlign.center,
                   style: welcomeSubtitle,
                 ),
                 Text(
-                  'using OnMart',
-                  textAlign: TextAlign.right,
+                  'can enjoy using OnMart',
+                  textAlign: TextAlign.center,
                   style: welcomeSubtitle,
                 ),
                 SizedBox(height: 70),
@@ -108,7 +108,7 @@ class SignUpView extends GetView<SignUpController> {
                     onPressed: () => signupC.signup(
                         controller.emailC.text, controller.passC.text),
                     child: Text(
-                      'LOGIN',
+                      'SIGNUP',
                       style: loginButton,
                     ),
                   ),
