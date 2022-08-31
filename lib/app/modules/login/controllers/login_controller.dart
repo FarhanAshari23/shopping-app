@@ -18,8 +18,7 @@ class LoginController extends GetxController {
 
   void login(String email, String password) async {
     final box = GetStorage();
-    if (emailC.text == "farhanashari2346@gmail.com" &&
-        passC.text == 'inibukanpassword') {
+    if (emailC.text == email && passC.text == password) {
       if (box.read("dataRememberme") != null) {
         box.remove('dataRememberme');
       }

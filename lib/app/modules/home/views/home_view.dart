@@ -391,6 +391,64 @@ class HomeView extends GetView<HomeController> {
       );
     }
 
+    Widget featProduct(
+      String title,
+      String imgUrl,
+      String price,
+      double widthImg,
+      double heightImg,
+    ) {
+      return Container(
+        width: 160,
+        height: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: Color(0xffD9D9D9),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 7, left: 6),
+              child: Text(
+                title,
+                style: itemsTopProduct,
+              ),
+            ),
+            SizedBox(height: 3),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 7),
+                child: Image.asset(
+                  imgUrl,
+                  width: widthImg,
+                  height: heightImg,
+                ),
+              ),
+            ),
+            SizedBox(height: 3),
+            Padding(
+              padding: const EdgeInsets.only(left: 7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Discount up',
+                    style: discountFeatured,
+                  ),
+                  Text(
+                    price,
+                    style: discountFeatured,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xff1C1C1E),
       body: SingleChildScrollView(
@@ -890,7 +948,117 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ],
                       ),
-                      SizedBox(height: 40),
+                      SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text('Based on your search',
+                              style: mainTitleSetting),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 13),
+                          child: SizedBox(
+                            width: 348,
+                            height: 192,
+                            child: ListView(
+                              scrollDirection: Axis.horizontal,
+                              children: [
+                                listRecomend(
+                                  'assets/gambar/Vidar.jpg',
+                                  'HG 1/144 GUNDAM VIDAR',
+                                  'Rp.210.000',
+                                  'Semarang',
+                                  'Cash on Delivery',
+                                  '4.3 | 17 sold',
+                                ),
+                                SizedBox(width: mediaQueryWidth * 0.03),
+                                listRecomend(
+                                  'assets/gambar/Legion.jpg',
+                                  'LEGION 5 PRO RYZEN 7',
+                                  'Rp.25.100.000',
+                                  'Jakarta Pusat',
+                                  'Paylater',
+                                  '4.8 | 12 sold',
+                                ),
+                                SizedBox(width: mediaQueryWidth * 0.03),
+                                listRecomend(
+                                  'assets/gambar/barbatos.jpg',
+                                  'GUNDAM BARBATOS',
+                                  'Rp.205.000',
+                                  'Semarang',
+                                  'Cash on Delivery',
+                                  '4.3 | 12 sold',
+                                ),
+                                SizedBox(width: mediaQueryWidth * 0.03),
+                                Container(
+                                  height: bodyHeight * 0.4,
+                                  width: mediaQueryWidth * 0.28,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: const Color(0xffFF8753),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Image.asset(
+                                        'assets/gambar/right-arrow.png',
+                                        width: 20,
+                                        height: 20,
+                                      ),
+                                      SizedBox(height: 10),
+                                      Text(
+                                        'See another \n products',
+                                        textAlign: TextAlign.center,
+                                        style: terms,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(width: mediaQueryWidth * 0.03),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text('Featured Product Promotion',
+                              style: mainTitleSetting),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          featProduct(
+                              'Keyboard',
+                              'assets/gambar/computerkeyboard.jpg',
+                              'to 50%',
+                              88,
+                              42),
+                          featProduct('Monitor', 'assets/gambar/Monitor.png',
+                              'to 30%', 54, 42),
+                        ],
+                      ),
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          featProduct('Graphic Card',
+                              'assets/gambar/nvidia.png', 'to 35%', 60, 42),
+                          featProduct('Smartphone', 'assets/gambar/zflip.png',
+                              'to 40%', 58, 42),
+                        ],
+                      ),
+                      SizedBox(height: 50),
                       Container(
                         height: 20,
                         width: double.infinity,

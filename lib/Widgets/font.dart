@@ -164,3 +164,21 @@ TextStyle resetSubTitle = GoogleFonts.robotoSlab(
   fontSize: 24,
   fontWeight: FontWeight.w500,
 );
+
+TextStyle statusPackage = GoogleFonts.poppins(
+  color: Colors.white,
+  fontSize: 6,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle priceTransaction = GoogleFonts.poppins(
+  color: Colors.white,
+  fontSize: 12,
+  fontWeight: FontWeight.bold,
+);
+
+TextStyle discountFeatured = GoogleFonts.poppins(
+  color: Colors.black,
+  fontSize: 8,
+  fontWeight: FontWeight.w500,
+);
