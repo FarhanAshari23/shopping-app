@@ -123,8 +123,23 @@ class LoginView extends GetView<LoginController> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                     ),
-                    onPressed: () => loginC.login(
-                        controller.emailC.text, controller.passC.text),
+                    onPressed: () {
+                      if (loginC.emailC.text.isEmpty &&
+                          loginC.passC.text.isEmpty) {
+                        Get.defaultDialog(
+                          title: "Fill your email and password",
+                          middleText:
+                              "Please input your email and your password",
+                          textConfirm: "Ok",
+                          onConfirm: () async {
+                            Get.back();
+                          },
+                        );
+                      } else {
+                        loginC.login(
+                            controller.emailC.text, controller.passC.text);
+                      }
+                    },
                     child: Text(
                       'LOGIN',
                       style: loginButton,

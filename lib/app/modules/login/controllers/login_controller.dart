@@ -31,7 +31,6 @@ class LoginController extends GetxController {
           },
         );
       }
-      Get.toNamed(Routes.DASHBOARD);
     } else {
       Get.defaultDialog(
         title: 'Error notification',
@@ -69,6 +68,15 @@ class LoginController extends GetxController {
         Get.defaultDialog(
             title: "Error notification",
             middleText: "wrong password provided for that user");
+      } else {
+        Get.defaultDialog(
+          title: "Your password and email is wrong",
+          middleText: "Please input your email and your password correctly",
+          textConfirm: "Ok",
+          onConfirm: () async {
+            Get.back();
+          },
+        );
       }
     } catch (e) {
       Get.defaultDialog(
